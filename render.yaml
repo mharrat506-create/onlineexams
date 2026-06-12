@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: online-exams
+    runtime: php
+    buildCommand: composer install --no-dev
+    startCommand: php -S 0.0.0.0:8080 -t "Online exams"
+    envVars:
+      - key: DB_HOST
+        value: ${db.HOSTNAME}
+      - key: DB_PORT
+        value: ${db.PORT}
+      - key: DB_NAME
+        value: ${db.DATABASE}
+      - key: DB_USER
+        value: ${db.USERNAME}
+      - key: DB_PASS
+        value: ${db.PASSWORD}
+
+databases:
+  - name: db
+    databaseName: online_exam
+    user: online_exam_user
+    plan: free
